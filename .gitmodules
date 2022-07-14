@@ -1,0 +1,3 @@
+[submodule "backend/MAXINE-AR-SDK"]
+	path = backend/MAXINE-AR-SDK
+	url = https://github.com/NVIDIA/MAXINE-AR-SDK.git
