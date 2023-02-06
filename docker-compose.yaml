@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "5173:80"
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 64Gi
+          cpus: "1.0"
+          # Allocate 96GB of GPU VRAM
+          devices:
+            - driver: "nvidia"
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
