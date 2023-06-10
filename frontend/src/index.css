@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-image: url('assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+.logo-margin {
+  margin-left: 300px;
+}
+.login-margin {
+  margin-right: 300px;
+}
+
+@media (max-width: 1080px) {
+  .navbar-padding {
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  .logo-margin, .login-margin {
+      margin-left: 0;
+      margin-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-content {
+      display: none;
+  }
+  .content-boxes {
+      flex-direction: column;
+  }
+  .content-box {
+      margin-bottom: 16px;
+  }
+}
+
+video {
+  top: 0px;
+  left: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 0.5rem; 
+}
