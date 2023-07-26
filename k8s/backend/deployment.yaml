@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gaizeAPI
+  namespace: backend
+  labels:
+    app: gaizeAPI
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gaizeAPI
+  template:
+    metadata:
+      labels:
+        app: gaizeAPI
+    spec:
+      containers:
+        - name: gaizeAPI
+          image: your-docker-repo/gaizeAPI:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+              nvidia.com/gpu: "1"  # Request GPU
