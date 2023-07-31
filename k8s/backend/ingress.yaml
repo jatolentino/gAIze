@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gaizeAPI-ingress
+  namespace: backend
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: gaize.joseatolentino.com 
+      http:
+        paths:
+          - path: /data
+            pathType: Prefix
+            backend:
+              service:
+                name: gaizeAPI-service
+                port:
+                  number: 80
+          - path: /result
+            pathType: Prefix
+            backend:
+              service:
+                name: gaizeAPI-service
+                port:
+                  number: 80
