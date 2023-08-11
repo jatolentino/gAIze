@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gaize-frontend
+  namespace: frontend
+  labels:
+    app: gaize-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gaize-frontend
+  template:
+    metadata:
+      labels:
+        app: gaize-frontend
+    spec:
+      containers:
+        - name: gaize-frontend
+          image: your-docker-repo/gaize-frontend:latest
+          ports:
+            - containerPort: 80
