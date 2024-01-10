@@ -78,29 +78,29 @@ https://github.com/user-attachments/assets/305102aa-fd31-4ca7-b0f2-57a568c894fe
 
 #####  Table of Contents
 
-- [ Overview](#-overview)
-- [ Features](#-features)
-- [ Repository Structure](#-repository-structure)
-- [ Modules](#-modules)
-- [ Getting Started](#-getting-started)
-    - [ Prerequisites](#-prerequisites)
-    - [ Installation](#-installation)
-    - [ Usage](#-usage)
-    - [ Tests](#-tests)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
+- [ 1. Overview](#-overview)
+- [ 2. Features](#-features)
+- [ 3. Repository Structure](#-repository-structure)
+- [ 4. Modules](#-modules)
+- [ 5. Getting Started](#-getting-started)
+    - [ 5.1. Prerequisites](#-prerequisites)
+    - [ 5.2. Installation](#-installation)
+    - [ 5.3. Usage](#-usage)
+    - [ 5.4. Tests](#-tests)
+- [ 6. Project Roadmap](#-project-roadmap)
+- [ 7. Contributing](#-contributing)
+- [ 8. License](#-license)
+- [ 9. Acknowledgments](#-acknowledgments)
 
 ---
 
-##  Overview
+## 1.  Overview
 
-GAIze is a cutting-edge open-source project designed to revolutionize AI-driven applications by providing a seamless and efficient infrastructure for managing and deploying microservices within Kubernetes clusters. The project encompasses a robust architecture defined through various files, including `docker-compose.yaml` for service definitions, `k8s/namespace.yaml` for Kubernetes namespace configurations, and `k8s/ingress-controller.yaml` for Nginx Ingress Controller deployment and routing. The core functionality of gAIze lies in orchestrating scalable deployments for services like `gaizeAPI` and `gaize-frontend`, optimizing resource utilization, and facilitating secure external access to microservices. The projects value proposition lies in its ability to streamline AI application development, enhance system reliability, and ensure high availability of AI-powered services through efficient containerized deployment strategies and scalable routing mechanisms.
+GAIze is a gaze correction tool designed to leverage AI-driven applications by providing a seamless and efficient infrastructure for managing and deploying microservices within Kubernetes clusters. The project encompasses a robust architecture defined through various files, including `docker-compose.yaml` for service definitions, `k8s/namespace.yaml` for Kubernetes namespace configurations, and `k8s/ingress-controller.yaml` for Nginx Ingress Controller deployment and routing. The core functionality of gAIze lies in orchestrating scalable deployments for services like `gaizeAPI` and `gaize-frontend`, optimizing resource utilization, and facilitating secure external access to microservices. The projects value proposition lies in its ability to streamline AI application development, enhance system reliability, and ensure high availability of AI-powered services through efficient containerized deployment strategies and scalable routing mechanisms.
 
 ---
 
-##  Features
+## 2. Features
 
 |    |   Feature         | Description |
 |----|-------------------|---------------------------------------------------------------|
@@ -116,75 +116,123 @@ GAIze is a cutting-edge open-source project designed to revolutionize AI-driven 
 
 ---
 
-##  Repository Structure
+##  3. Repository Structure
 
 ```sh
 └── gAIze/
     ├── AWS
-    │   └── nginx
+    │   └── nginx
+    │       └── nginx.conf
     ├── CODE_OF_CONDUCT.md
     ├── Distributed-System-Design
-    │   └── gAIze-DS.svg
+    │   └── gAIze-DS.svg
     ├── GCP
-    │   └── nginx
+    │   └── nginx
+    │       └── nginx.conf
     ├── LICENSE
     ├── NVIDIA-NIM
-    │   ├── configs.sh
-    │   └── docker-config.sh
+    │   ├── configs.sh
+    │   └── docker-config.sh
     ├── README.md
     ├── SECURITY.md
     ├── UI-Figma-Penpot-Design
-    │   └── gAIze-UI.penpot
+    │   ├── UI.svg
+    │   └── gAIze-UI.penpot
     ├── backend
-    │   ├── .gitmodules
-    │   ├── Dockerfile
-    │   ├── GazeRedirect.exe
-    │   ├── api
-    │   ├── cmd
-    │   ├── docs
-    │   ├── gAIze.bat
-    │   ├── go.mod
-    │   ├── go.sum
-    │   ├── internal
-    │   ├── main.go
-    │   ├── pkg
-    │   ├── readme.md
-    │   ├── results
-    │   ├── scripts
-    │   ├── tests
-    │   └── uploads
+    │   ├── Dockerfile
+    │   ├── GazeRedirect.exe
+    │   ├── api
+    │   │   └── handler
+    │   │       ├── compress_video.go
+    │   │       ├── constants.go
+    │   │       ├── process_video.go
+    │   │       ├── receive_video.go
+    │   │       └── send_video.go
+    │   ├── cmd
+    │   │   └── gaizeapi
+    │   │       └── main.go
+    │   ├── docs
+    │   │   └── docs.txt
+    │   ├── gAIze.bat
+    │   ├── go.mod
+    │   ├── go.sum
+    │   ├── internal
+    │   │   └── config
+    │   │       └── paths.go
+    │   ├── main.go
+    │   ├── MAXINE-AR-SDK
+    │   ├── NVIDIA_AR_SDK_0.8.2.0
+    │   ├── pkg
+    │   │   └── files.go
+    │   ├── readme.md
+    │   ├── results
+    │   │   └── output
+    │   ├── scripts
+    │   │   ├── GazeRedirect.exe
+    │   │   └── gAIze.bat
+    │   ├── tests
+    │   │   └── test.go
+    │   └── uploads
+    │       ├── input
+    │       ├── input.mp4
+    │       └── test-video1.mp4
     ├── docker-compose.yaml
     ├── frontend
-    │   ├── .gitignore
-    │   ├── Dockerfile
-    │   ├── eslint.config.js
-    │   ├── index.html
-    │   ├── package-lock.json
-    │   ├── package.json
-    │   ├── postcss.config.js
-    │   ├── public
-    │   ├── readme.md
-    │   ├── src
-    │   ├── tailwind.config.js
-    │   ├── tsconfig.app.json
-    │   ├── tsconfig.json
-    │   ├── tsconfig.node.json
-    │   └── vite.config.ts
+    │   ├── Dockerfile
+    │   ├── eslint.config.js
+    │   ├── index.html
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── postcss.config.js
+    │   ├── public
+    │   │   └── logo.svg
+    │   ├── readme.md
+    │   ├── src
+    │   │   ├── App.css
+    │   │   ├── App.tsx
+    │   │   ├── assets
+    │   │   │   ├── images
+    │   │   │   │   ├── background.jpg
+    │   │   │   │   ├── hunter.png
+    │   │   │   │   ├── logo.png
+    │   │   │   │   ├── reviews.png
+    │   │   │   │   └── techs.png
+    │   │   │   └── react.svg
+    │   │   ├── components
+    │   │   │   ├── Header.tsx
+    │   │   │   ├── Hero.tsx
+    │   │   │   ├── Loader.tsx
+    │   │   │   └── VideoSection.tsx
+    │   │   ├── index.css
+    │   │   ├── main.tsx
+    │   │   └── vite-env.d.ts
+    │   ├── tailwind.config.js
+    │   ├── tsconfig.app.json
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
     ├── k8s
-    │   ├── backend
-    │   ├── frontend
-    │   ├── ingress-controller.yaml
-    │   └── namespace.yaml
+    │   ├── backend
+    │   │   ├── deployment.yaml
+    │   │   ├── ingress.yaml
+    │   │   └── service.yaml
+    │   ├── frontend
+    │   │   ├── deployment.yaml
+    │   │   ├── ingress.yaml
+    │   │   └── service.yaml
+    │   ├── ingress-controller.yaml
+    │   └── namespace.yaml
     ├── nginx
-    │   └── nginx.conf
+    │   └── nginx.conf
     └── samples
         ├── modified.mp4
         └── original.mp4
 ```
 
+
 ---
 
-##  Modules
+## 4. Modules
 
 <details closed><summary>.</summary>
 
@@ -379,58 +427,157 @@ GAIze is a cutting-edge open-source project designed to revolutionize AI-driven 
 
 ---
 
-##  Getting Started
+## 5. Getting Started
 
-###  Prerequisites
+### 5.1. Prerequisites
 
-**Go**: `version x.y.z`
+This Project assumes that:
+- You have an Nvidia GPU with CUDA and its drivers installed and of least 6GB of VRAM.
+- You are using a Windows 10/11 machine
 
-###  Installation
+    >For Linux/Mac users, you need to have the NVIDIA LINUX AR SDK (check step 6)
 
-Build the project from source:
+    **Mandatory** <br/>
+    Go: `version >=  1.22.3` <br/>
+    React: `version >=  18.3.1` <br/>
+    Node: `version >= 18.20.2` <br/>
+    NPM: `version >=  10.5.0` <br/>
 
-1. Clone the gAIze repository:
-```sh
-❯ git clone https://github.com/jatolentino/gAIze
+    Optional <br/>
+    Docker Desktop: `version >= 27.2.0` <br/>
+    Kubernetes: `version >= 1.30.2` <br/>
+
+>Note: Video Files are deleted after being processed to free space and for privacy reasons, this software does not/won't store them.
+
+### 5.2. Installation
+
+Set up the project:
+
+- Clone the gAIze repository:
+    ```sh
+    git clone https://github.com/jatolentino/gAIze
+    ```
+
+- Navigate to the project directory:
+    ```sh
+    cd gAIze
+    ```
+
+#### 5.2.1. Frontend
+
+Install the node packages
+
+```
+npm i
 ```
 
-2. Navigate to the project directory:
-```sh
-❯ cd gAIze
+
+#### 5.2.2. Backend
+
+- Download the Nvidia SDK
+    - For [windows](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/maxine/resources/maxine_windows_ar_sdk_ga/files)
+
+    - For [Linux](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/maxine/resources/maxine_linux_ar_sdk/files)
+
+- Uncompress the Nvidia SDK rar and rename the extracted folder to:
+    `NVIDIA_AR_SDK_0.8.2.0`
+
+- Folder Structure
+    You should get a folder structure like:
+    ```bash
+    backend
+    |-- GazeRedirect.exe
+    |-- api
+    |   `-- handler
+    |       |-- compress_video.go
+    |       |-- constants.go
+    |       |-- process_video.go
+    |       |-- receive_video.go
+    |       `-- send_video.go
+    |-- cmd
+    |   `-- gaizeapi
+    |       `-- main.go
+    |-- docs
+    |   `-- docs.txt
+    |-- gAIze.bat
+    |-- go.mod
+    |-- go.sum
+    |-- internal
+    |   `-- config
+    |       `-- paths.go
+    |-- main.go
+    |-- MAXINE-AR-SDK
+    |-- NVIDIA_AR_SDK_0.8.2.0
+    |-- pkg
+    |   `-- files.go
+    |-- readme.md
+    |-- results
+    |   `-- output
+    |-- scripts
+    |   |-- GazeRedirect.exe
+    |   `-- gAIze.bat
+    |-- tests
+    |   `-- test.go
+    `-- uploads
+        `-- input
+    ```
+
+- Install packages
+    ```bash
+    go get github.com/gin-contrib/cors
+    go get github.com/gin-gonic/gin
+    ```
+
+###  5.3. Usage
+
+To run the project, execute the following commands:
+
+#### 5.3.1. Run the Frontend
+
+```
+cd ./frontend
+npm run dev
 ```
 
-3. Install the required dependencies:
-```sh
-❯ go build -o myapp
+
+#### 5.3.2. Run the Backend
+
+```
+cd ./backend
+go run main.go
 ```
 
-###  Usage
 
-To run the project, execute the following command:
-
-```sh
-❯ ./myapp
-```
-
-###  Tests
+###  5.4. Tests
 
 Execute the test suite using the following command:
 
 ```sh
-❯ go test
+go test
 ```
 
 ---
 
-##  Project Roadmap
+## 6. Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+- [X] **`Task 1`**: Microservice System Design.
+- [X] **`Task 2`**: Design the UI/UX.
+- [X] **`Task 3`**: Implement the frontend.
+- [X] **`Task 4`**: Design the Go API.
+- [X] **`Task 5`**: Implement /data and /result routes.
+- [X] **`Task 6`**: Simple test to store local files.
+- [X] **`Task 7`**: Add SDK algorithm.
+- [X] **`Task 8`**: Add video compression algorithm.
+- [X] **`Task 9`**: Containarize Frontend.
+- [X] **`Task 10`**: Containarize Backend.
+- [ ] **`Task 11`**: Implement Kubernetes Orchestration
+- [ ] **`Task 12`**: Store files momentaneously on S3.
+- [ ] **`Task 13`**: Implement a Cancel function to quit a process.
+
 
 ---
 
-##  Contributing
+## 7. Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
 
@@ -475,13 +622,13 @@ Contributions are welcome! Here are several ways you can contribute:
 
 ---
 
-##  License
+## 8. License
 
 This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
 ---
 
-##  Acknowledgments
+## 9. Acknowledgments
 
 - List any resources, contributors, inspiration, etc. here.
 
