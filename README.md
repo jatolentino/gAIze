@@ -435,7 +435,7 @@ This Project assumes that:
 - You have an Nvidia GPU with CUDA and its drivers installed and of least 6GB of VRAM.
 - You are using a Windows 10/11 machine
 
-    >For Linux/Mac users, you need to have the NVIDIA LINUX AR SDK (check step 6)
+    >For Linux/Mac users, you need to have the NVIDIA LINUX AR SDK (check step `5.2.2.`)
 
     **Mandatory** <br/>
     Go: `version >=  1.22.3` <br/>
